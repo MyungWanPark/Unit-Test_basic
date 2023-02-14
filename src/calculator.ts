@@ -10,7 +10,11 @@ export default class Calculator {
     }
 
     add(num: number): number {
-        return this.value + num;
+        const result = this.value + num;
+        if (result > 100) {
+            throw new Error('value cannot be greater than 100');
+        }
+        return result;
     }
 
     subtract(num: number): number {
