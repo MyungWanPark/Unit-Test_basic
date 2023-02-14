@@ -26,7 +26,7 @@ describe('product service', () => {
         expect(items).toEqual([{ name: 'apple', available: true }]);
     });
 
-    it('tes number of fetchItems called', async () => {
+    it('test number of fetchItems called', async () => {
         await productInstance.getAvailableProduct();
         expect(fetchItems).toHaveBeenCalledTimes(1);
     });
