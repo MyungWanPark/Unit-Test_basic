@@ -1,5 +1,5 @@
-import ProductService from './../productService';
-import { ProductClient } from '../productClient';
+import ProductService from '../productService-no-DI';
+import { ProductClientImpl as ProductClient } from '../productClient';
 jest.mock('../productClient.ts');
 describe('product service', () => {
     const fetchItems = jest.fn(async () => {

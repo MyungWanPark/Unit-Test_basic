@@ -1,13 +1,9 @@
 import { ProductClient } from './productClient';
 
 export default class ProductService {
-    productClient;
+    constructor(public productClient: ProductClient) {}
 
-    constructor() {
-        this.productClient = new ProductClient();
-    }
-
-    getAvailableProduct() {
+    async getAvailableProduct() {
         return this.productClient
             .fetchItems()
             .then((items) => items.filter((item) => item.available === true));
