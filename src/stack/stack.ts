@@ -1,25 +1,41 @@
+type Node<T> = {
+    item: T;
+    next: Node<T> | null;
+};
+
 export default class Stack<T> {
-    constructor(public item: Array<T> = []) {}
+    constructor(
+        private _size: number = 0,
+        private head: Node<T> | null = null
+    ) {}
 
     size(): number {
-        return this.item.length;
+        return this._size;
     }
 
     push(item: T) {
-        this.item.push(item);
+        const node: Node<T> = {
+            item,
+            next: this.head,
+        };
+        this.head = node;
+        this._size++;
     }
 
     pop(): T | undefined {
-        if (this.item.length === 0) {
+        if (this._size === 0) {
             throw new Error('Stack is empty');
         }
-        return this.item.pop();
+        const node = this.head;
+        this.head = node!.next;
+        this._size--;
+        return node?.item;
     }
 
     peek(): T {
-        if (this.item.length === 0) {
+        if (this._size === 0) {
             throw new Error('Stack is empty');
         }
-        return this.item[this.size() - 1];
+        return this.head!.item;
     }
 }
